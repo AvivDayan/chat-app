@@ -76,7 +76,10 @@ $sendLocationButton.addEventListener('click',()=>{
             $sendLocationButton.removeAttribute('disabled');
             console.log("Location shared!");
         });
-    },undefined,{enableHighAccuracy:true})
+    },(error)=>{
+        $sendLocationButton.removeAttribute('disabled');
+        console.log("Something went wrong, location wasnt shared!",error);
+    },{enableHighAccuracy:true})
 })
 
 socket.on('locationMessage',(locationMessage)=>{
